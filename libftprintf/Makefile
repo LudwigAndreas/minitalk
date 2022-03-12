@@ -57,12 +57,11 @@ RM			:= rm -rf
 HEADER		:= libft/libft.h
 .PHONY: all clean fclean re bonus
 
-%.o: %.c $(HEADER)
+%.o: %.c $(HEADER) ft_printf.h
 	$(CC) $(CFLAGS) $< -o $@ -include $(HEADER)
 
-$(NAME): $(OBJS) $(HEADER) 
+$(NAME): $(OBJS) libft
 	make -C libft/
-	make bonus -C libft/
 	ar rcs $(NAME) $(OBJS) $(LIBFT_OBJS)
 
 all: $(NAME)

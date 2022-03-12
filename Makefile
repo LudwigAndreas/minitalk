@@ -11,12 +11,12 @@ all: $(SERVER) $(CLIENT)
 %.o: %.c
 	gcc $(CFLAGS) -c $?
 
-$(SERVER): server.o minitalk.h
+$(SERVER): server.o minitalk.h libftprintf
 	make all -C $(LIBFT_PATH)
-	$(CC) -o $@ $< $(LIBFT_PATH)libftprintf.a
+	gcc -o $@ $< $(LIBFT_PATH)libftprintf.a
 
-$(CLIENT): client.o minitalk.h
-	$(CC) -o $@ $< $(LIBFT_PATH)libftprintf.a
+$(CLIENT): client.o minitalk.h libftprintf
+	gcc -o $@ $< $(LIBFT_PATH)libftprintf.a
 
 clean:
 	make clean -C $(LIBFT_PATH)
